@@ -60,20 +60,20 @@ jobs:
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}         # 服务器IP
         REMOTE_USER: ${{ secrets.REMOTE_USER }}         # 服务器用户名
         JAR_NAME: target/*.jar                         # 默认jar包路径
-        REMOTE_DIR: /home/ecs-user                      # 远程目录
+        REMOTE_DIR: /home/ecs-user/Jem-test                      # 远程目录
       run: |
         # 安装 ssh-agent 并添加私钥
-        #sudo apt-get install -y openssh-client
-        #mkdir -p ~/.ssh
-        #echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        #chmod 600 ~/.ssh/id_rsa
+        sudo apt-get install -y openssh-client
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
 
         # 禁用主机密钥检查（首次连接避免交互提示）
         echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null" > ~/.ssh/config
         echo -e "hello world" >/dev/
         ls target/*
         # 上传 jar 包
-        #scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
+        scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
 
         # 可选：重启服务（例如Spring Boot）
         #ssh $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_DIR && ls -al && echo 'Deploy completed!'"
