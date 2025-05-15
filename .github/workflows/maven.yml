@@ -71,7 +71,8 @@ jobs:
         # 禁用主机密钥检查（首次连接避免交互提示）
         echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null" > ~/.ssh/config
         echo -e "hello world" >/dev/null
-        ls target/*
+        pwd && ls
+        #ls target/*
         # 上传 jar 包
         #scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
 
