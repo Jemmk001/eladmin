@@ -59,8 +59,8 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # 服务器SSH私钥
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}         # 服务器IP
         REMOTE_USER: ${{ secrets.REMOTE_USER }}         # 服务器用户名
-        #JAR_NAME: target/*.jar                         # 默认jar包路径
-        #REMOTE_DIR: /home/ecs-user/Jem-test                       # 远程目录
+        JAR_NAME: target/*.jar                         # 默认jar包路径
+        REMOTE_DIR: /home/ecs-user/Jem-test                       # 远程目录
       run: |
         # 安装 ssh-agent 并添加私钥
         #sudo apt-get install -y openssh-client
