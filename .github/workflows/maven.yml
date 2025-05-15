@@ -69,10 +69,10 @@ jobs:
         #chmod 600 ~/.ssh/id_rsa
 
         # 禁用主机密钥检查（首次连接避免交互提示）
-        #echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null" > ~/.ssh/config
-         echo -e "hello world" >/dev/null
+        echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null" > ~/.ssh/config
+        echo -e "hello world" >/dev/null
         # 上传 jar 包
-        #scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
+        scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
 
         # 可选：重启服务（例如Spring Boot）
         #ssh $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_DIR && ls -al && echo 'Deploy completed!'"
