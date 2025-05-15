@@ -34,3 +34,20 @@ jobs:
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
     #  uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+
+    # 部署包
+    - name: ssh scp ssh pipelines
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      env:
+        WELCOME: "ssh scp ssh pipelines"
+        LASTSSH: "Doing something after copying"
+      with:
+        host: ${{ secrets.CLZ_HOST }}
+        user: ${{ secrets.CLZ_USER }}
+        pass: ${{ secrets.CLZ_PASS }}
+        port: 22
+        connect_timeout: 10
+        first_ssh: |
+          rm -rf /var/www/html/action_practise/*
+        scp: |
+          './dist/*' => /var/www/html/action_practise/
