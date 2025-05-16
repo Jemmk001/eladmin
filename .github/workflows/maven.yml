@@ -73,6 +73,7 @@ jobs:
         echo -e "hello world" >/dev/null
         #ls $JAR_NAME
         pwd && ls
+        ls ./eladmin-system/*
         #ls target/*
         # 上传 jar 包
         #scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
