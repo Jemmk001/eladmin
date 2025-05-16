@@ -61,7 +61,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # 服务器SSH私钥
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}         # 服务器IP
         REMOTE_USER: ${{ secrets.REMOTE_USER }}         # 服务器用户名
-        JAR_NAME: target/*.jar                      
+        JAR_NAME:  ./eladmin-system/target/*.jar                      
         REMOTE_DIR: /home/ecs-user/Jem-test
       run: |
         # 安装 ssh-agent 并添加私钥
@@ -78,7 +78,7 @@ jobs:
         ls ./eladmin-system/*
         #ls target/*
         # 上传 jar 包
-        #scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
+        scp -r $JAR_NAME $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
 
         # 可选：重启服务（例如Spring Boot）
         #ssh $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_DIR && ls -al && echo 'Deploy completed!'"
